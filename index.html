@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HomeSight — Rent vs. Buy Calculator</title>
+  <meta name="description" content="Free calculator that shows the true monthly cost of a home, how much house you can afford, and whether renting or buying builds more wealth." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="top">
+    <div class="wrap">
+      <h1>🏠 HomeSight</h1>
+      <p class="tagline">See the real numbers behind a home before you sign anything.</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <nav class="tabs" role="tablist">
+      <button role="tab" class="tab active" data-tab="cost">Monthly cost</button>
+      <button role="tab" class="tab" data-tab="afford">What can I afford?</button>
+      <button role="tab" class="tab" data-tab="rvb">Rent vs. buy</button>
+    </nav>
+
+    <!-- Shared home + loan inputs -->
+    <section class="card">
+      <h2>The home &amp; the loan</h2>
+      <div class="grid">
+        <label>Home price ($)<input type="number" id="price" value="550000" step="5000" /></label>
+        <label>Down payment ($)<input type="number" id="down" value="110000" step="5000" /></label>
+        <label>Interest rate (%)<input type="number" id="rate" value="6.5" step="0.125" /></label>
+        <label>Loan term (years)
+          <select id="term"><option>30</option><option>20</option><option>15</option></select>
+        </label>
+        <label>Property tax (% / yr)<input type="number" id="tax" value="1.1" step="0.05" /></label>
+        <label>Home insurance ($ / yr)<input type="number" id="ins" value="1800" step="100" /></label>
+        <label>HOA ($ / month)<input type="number" id="hoa" value="0" step="25" /></label>
+      </div>
+    </section>
+
+    <!-- Tab 1: monthly cost -->
+    <section class="panel active" id="panel-cost">
+      <div class="card">
+        <h2>Your monthly payment</h2>
+        <p class="big" id="costTotal">—</p>
+        <ul class="breakdown" id="costBreakdown"></ul>
+        <p class="note" id="pmiNote"></p>
+      </div>
+      <div class="card">
+        <h2>Where your money goes, year by year</h2>
+        <canvas id="amortChart" height="260"></canvas>
+        <p class="note">Early payments are mostly interest. Equity builds faster later in the loan.</p>
+      </div>
+    </section>
+
+    <!-- Tab 2: affordability -->
+    <section class="panel" id="panel-afford">
+      <div class="card">
+        <h2>Your finances</h2>
+        <div class="grid">
+          <label>Household income ($ / yr)<input type="number" id="income" value="140000" step="5000" /></label>
+          <label>Other debt payments ($ / month)<input type="number" id="debts" value="400" step="50" /></label>
+        </div>
+        <p class="note">Car loans, student loans, minimum credit card payments.</p>
+      </div>
+      <div class="card">
+        <h2>Max home price</h2>
+        <p class="big" id="affordPrice">—</p>
+        <p id="affordDetail"></p>
+        <p class="note">Uses the lender "28/36 rule": housing ≤ 28% of gross income, and housing + debts ≤ 36%.</p>
+      </div>
+    </section>
+
+    <!-- Tab 3: rent vs buy -->
+    <section class="panel" id="panel-rvb">
+      <div class="card">
+        <h2>Renting instead</h2>
+        <div class="grid">
+          <label>Rent for a similar place ($ / month)<input type="number" id="rent" value="3000" step="50" /></label>
+          <label>Rent increase (% / yr)<input type="number" id="rentGrowth" value="3" step="0.5" /></label>
+          <label>Home value growth (% / yr)<input type="number" id="appr" value="3.5" step="0.5" /></label>
+          <label>Investment return (% / yr)<input type="number" id="invest" value="6" step="0.5" /></label>
+          <label>Years you'll stay<input type="number" id="horizon" value="15" min="1" max="30" /></label>
+        </div>
+      </div>
+      <div class="card">
+        <h2>Net worth: buyer vs. renter</h2>
+        <p class="big" id="rvbVerdict">—</p>
+        <canvas id="rvbChart" height="260"></canvas>
+        <p class="note">Fair comparison: the renter invests the cash the buyer spent on the down payment and closing costs,
+          and whoever has the cheaper month invests the difference. Buyer's net worth counts home equity after 6% selling costs.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap foot">
+    Built with plain HTML, CSS &amp; JavaScript. Estimates only, not financial advice.
+  </footer>
+
+  <script type="module" src="src/app.js"></script>
+</body>
+</html>

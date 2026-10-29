@@ -1,0 +1,92 @@
+:root {
+  --bg: #f6f7f4;
+  --card: #ffffff;
+  --text: #1d2621;
+  --muted: #5f6b64;
+  --line: #e2e6e1;
+  --accent: #1f7a55;
+  --accent-2: #d9822b;
+  --accent-soft: #e5f2ec;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #121614;
+    --card: #1b211e;
+    --text: #e8ece9;
+    --muted: #9aa69f;
+    --line: #2c3430;
+    --accent: #4cc38a;
+    --accent-2: #f0a35a;
+    --accent-soft: #1f3329;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.5;
+}
+
+.wrap { max-width: 920px; margin: 0 auto; padding: 0 16px; }
+
+.top { background: #1f7a55; color: #fff; padding: 28px 0 22px; }
+.top h1 { margin: 0; font-size: 1.9rem; }
+.tagline { margin: 4px 0 0; opacity: 0.9; }
+
+.tabs { display: flex; gap: 6px; margin: 20px 0 12px; flex-wrap: wrap; }
+.tab {
+  border: 1px solid var(--line);
+  background: var(--card);
+  color: var(--text);
+  padding: 9px 16px;
+  border-radius: 999px;
+  font: inherit;
+  cursor: pointer;
+}
+.tab.active { background: var(--accent); border-color: var(--accent); color: var(--card); }
+
+.card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 18px 20px;
+  margin-bottom: 14px;
+}
+.card h2 { margin: 0 0 12px; font-size: 1.05rem; }
+
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 12px; }
+label { display: flex; flex-direction: column; gap: 4px; font-size: 0.85rem; color: var(--muted); }
+input, select {
+  font: inherit;
+  font-size: 1rem;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 8px 10px;
+}
+input:focus, select:focus { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+.panel { display: none; }
+.panel.active { display: block; }
+
+.big { font-size: 2.2rem; font-weight: 700; margin: 0 0 8px; color: var(--accent); font-variant-numeric: tabular-nums; }
+.note { font-size: 0.85rem; color: var(--muted); margin: 10px 0 0; }
+
+.breakdown { list-style: none; padding: 0; margin: 0; }
+.breakdown li {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  border-bottom: 1px solid var(--line);
+  font-variant-numeric: tabular-nums;
+}
+
+canvas { width: 100%; height: 260px; display: block; }
+
+.foot { color: var(--muted); font-size: 0.8rem; padding-bottom: 32px; }
