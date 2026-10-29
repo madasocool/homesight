@@ -1,5 +1,7 @@
 # 🏠 HomeSight
 
+[![Tests](https://github.com/madasocool/homesight/actions/workflows/test.yml/badge.svg)](https://github.com/madasocool/homesight/actions/workflows/test.yml)
+
 **A free web calculator that shows the real cost of buying a home — and whether renting or buying actually builds more wealth.**
 
 🔗 **Live site:** https://madasocool.github.io/homesight/
@@ -31,7 +33,7 @@ This is why buying often loses in the first few years (closing and selling costs
 - Plain **HTML, CSS and JavaScript** (ES modules) — no frameworks, no build step
 - Charts drawn by hand on `<canvas>` (`src/chart.js`) — no chart library
 - All financial math lives in pure functions in `src/finance.js`, separate from the UI
-- **Unit tests** for all the math, using Node's built-in test runner
+- **Unit tests** for all the math (Node's built-in test runner), run automatically on every push with **GitHub Actions**
 - Light and dark mode, works on phones
 
 ```
